@@ -1,5 +1,6 @@
 var fs = require("fs");
 var request = require("request");
+var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 //read the keys.js file
 var mytwitterkeys = require('./keys.js');
@@ -22,6 +23,13 @@ var spotifySecret = mySpotifykeys.spotifySecret;
 //console.log("Spotify Key: " + mySpotifykeys.spotifyId);
 //console.log("Spotify Secret: " + mySpotifykeys.spotifySecret);
 
+var client = new Twitter({
+    consumer_key: consumer_key,
+    consumer_secret: consumer_secret,
+    access_token_key: access_token_key,
+    access_token_secret: access_token_secret
+});
+
 
 //reaad the argv array
 var inputString = process.argv;
@@ -33,6 +41,7 @@ var aMovie = inputString[3]
 
 if (command === "my-tweets") {
     console.log("Execute my-tweets command")
+    showTweets();
 } else if (command === "spotify-this-song") {
     console.log("Execute spotify-this-song command");
     spotifyThisSong();
@@ -47,12 +56,19 @@ if (command === "my-tweets") {
 }
 
 //function called if command entered was 'my-tweets'
-// Sorry but wasn't able to complete this api due to workload
-// Work activity picks up significantly prior to year-end freeze and
-// I simply ran out of time. Will commit to completing later
+// I simply ran out of time. Will need help formatting the data and/or 
+//     commit to completing later
 // I set up a Twitter account
 // Got the credentials and keys, so everything is ready except the logic
 function showTweets() {
+
+
+    var params = { screen_name: 'nodejs' };
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+        if (!error) {
+            console.log(tweets);
+        }
+    });
 
 
 }

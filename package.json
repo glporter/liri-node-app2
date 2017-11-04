@@ -17,10 +17,11 @@
     },
     "homepage": "https://github.com/glporter/liri-node-app#readme",
     "dependencies": {
-        "node-spotify-api": "^1.0.7",
-        "keys.js": "^1.0.7",
-        "spotifyKeys.js": "^1.0.7",
         "fs": "0.0.1-security",
-        "request": "2.83.0"
+        "keys.js": "^1.0.7",
+        "node-spotify-api": "^1.0.7",
+        "request": "2.83.0",
+        "spotifyKeys.js": "^1.0.7",
+        "twitter": "^1.7.1"
     }
 }

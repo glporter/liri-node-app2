@@ -9,18 +9,18 @@ var consumer_secret = mytwitterkeys.consumer_secret;
 var access_token_key = mytwitterkeys.access_token_key;
 var access_token_secret = mytwitterkeys.access_token_secret;
 
-console.log("Consumer Key: " + mytwitterkeys.consumer_key);
-console.log("Consumer Secret: " + mytwitterkeys.consumer_secret);
-console.log("Access Token Key: " + mytwitterkeys.access_token_key);
-console.log("Access Token Secret: " + mytwitterkeys.access_token_secret);
+//console.log("Consumer Key: " + mytwitterkeys.consumer_key);
+//console.log("Consumer Secret: " + mytwitterkeys.consumer_secret);
+//console.log("Access Token Key: " + mytwitterkeys.access_token_key);
+//console.log("Access Token Secret: " + mytwitterkeys.access_token_secret);
 
 var mySpotifykeys = require('./spotifyKeys.js');
 
 var spotifyID = mySpotifykeys.spotifyId;
 var spotifySecret = mySpotifykeys.spotifySecret;
 
-console.log("Spotify Key: " + mySpotifykeys.spotifyId);
-console.log("Spotify Secret: " + mySpotifykeys.spotifySecret);
+//console.log("Spotify Key: " + mySpotifykeys.spotifyId);
+//console.log("Spotify Secret: " + mySpotifykeys.spotifySecret);
 
 
 //reaad the argv array

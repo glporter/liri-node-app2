@@ -35,19 +35,25 @@ var client = new Twitter({
 var inputString = process.argv;
 //read the argv[2] argument which should be the command you want to perform
 
-var command = inputString[2]
-var aSong = inputString[3]
-var aMovie = inputString[3]
+//var command = inputString[2]
+//var aSong = inputString[3]
+//var aMovie = inputString[3]
+var command = process.argv[2];
+var aSong = process.argv[3];
+var aMovie = process.argv[3];
+
+console.log("command: " + command);
+console.log("aSong: " + aSong);
 
 if (command === "my-tweets") {
     console.log("Execute my-tweets command")
     showTweets();
 } else if (command === "spotify-this-song") {
     console.log("Execute spotify-this-song command");
-    spotifyThisSong();
+    spotifyThisSong(aSong);
 } else if (command === "movie-this") {
     console.log("Execute movie-this command");
-    movieThis();
+    movieThis(aMovie);
 } else if (command === "do-what-it-says") {
     console.log("Execute do-what-it-says command")
     doWhatItSays();
@@ -62,11 +68,16 @@ if (command === "my-tweets") {
 // Got the credentials and keys, so everything is ready except the logic
 function showTweets() {
 
-
+    var index = 0;
     var params = { screen_name: 'nodejs' };
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
-            console.log(tweets);
+            for (index = 0; index < tweets.length; index++) {
+                console.log("*************************** Tweet *********************************");
+                console.log(tweets[index].created_at);
+                console.log(tweets[index].text);
+            }
+            //console.log(response);
         }
     });
 
@@ -88,7 +99,7 @@ function spotifyThisSong(aSong) {
         secret: 'b8b86823badb41618e3e4539e5e9346c'
     });
 
-    console.log("aSong = " + aSong);
+    //console.log("aSong = " + aSong);
 
     spotify.search({
         type: 'album',
@@ -99,12 +110,11 @@ function spotifyThisSong(aSong) {
             return console.log('Error occurred: ' + err);
         }
 
-        console.log("Artist(): ");
-        console.log("The Song's name: ");
-        console.log("Prview link: " + data.albums.href);
-        console.log("Album: ");
-        console.log(JSON.stringify(data));
-        console.log(data.items);
+        //console.log(JSON.stringify(data, null, 2));
+        console.log("Artists: " + data.albums.items[0].artists[0].name);
+        console.log("The Song's name: " + aSong);
+        console.log("Preview link: " + data.albums.href);
+        console.log("The album that the song is from: " + data.albums.items[0].name);
 
     });
 
